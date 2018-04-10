@@ -37,8 +37,8 @@ python -m venv 가상환경 이름
 #### 샘플  
 ```  
 d:  
-mkdir D:\_my\git\selfhow\django-blog-sample-001\src  
-cd D:\_my\git\selfhow\django-blog-sample-001\src  
+mkdir D:\_my\git\selfhow\django-blog-sample-001
+cd D:\_my\git\selfhow\django-blog-sample-001
 python -m venv venv35  
 ```  
   
@@ -53,7 +53,7 @@ cd 프로젝트 경로
   
 ```  
 d:  
-cd D:\_my\git\selfhow\django-blog-sample-001\src  
+cd D:\_my\git\selfhow\django-blog-sample-001
 venv35\scripts\activate  
 ```  
   
@@ -100,3 +100,69 @@ django 디렉토리와, pytz 디렉토리가 보여야 합니다.
 ls venv35/lib/site-packages  
 ```  
 django 디렉토리와, pytz 디렉토리가 보여야 합니다.
+
+# 만약 git으로 관리하려면 가상 환경은 빼버립시다.
+굳이 가상 환경을 github에 올릴 필요는 없으니까요.
+
+## .gitignore 파일 생성
+github 루트 디렉토리에 .gitignore 라는 파일을 만듭니다.
+
+그리고 아래 내용을 적습니다.
+```
+venv35
+```
+
+끝입니다.
+이렇게 하면 git에서 venv35 라는 가상 환경은 관리하지 않게 됩니다.
+
+# django 프로젝트 생성
+드디어 프로젝트를 생성합시다.
+그 전에 virtualenv 안에 들어와 있는지 꼭 확인하세요.
+```
+cd 프로젝트 
+django-admin.py startproject 프로젝트명 .
+```
+
+마지막에 . 이 있는 것을 빼먹으면 안되요.
+.은 현재 디렉토리 아래에 만들겠다는 뜻입니다.
+
+
+## 샘플예제
+```
+d: 
+mkdir D:\_my\git\selfhow\django-blog-sample-001\src 
+cd D:\_my\git\selfhow\django-blog-sample-001\src
+django-admin.py startproject selfhowblog .
+```
+
+저는 github으로 프로젝트를 관리하기 위해 소스 폴더를 따로 빼고 src라고 이름 붙였습니다.
+selfhowblog 는 프로젝트 이름입니다.
+이렇게 하면 디렉토리 구조는 이런식으로 됩니다.
+```
+django-blog-sample-001  <= github 루트 디렉토리
+django-blog-sample-001\venv35 <= 가상환경
+django-blog-sample-001\src <= django 프로젝트 루트
+django-blog-sample-001\src\selfhowblog  <= django 프로젝트의 메인 앱.
+```
+
+## 확인해 보기
+장고에 내장된 웹서버로 일단 제대로 설치되었나 확인하는 순간입니다.
+
+```
+cd django_프로젝트_루트_디렉토리
+python manage.py runserver
+```
+
+뭔가 메세지가 어쩌구 나오면 웹브라우저로 가서 [http://localhost:8000](http://localhost:8000) 으로 접속해 봅니다.
+
+**The install worked successfully! Congratulations!** 
+이런 메세지가 나오면 잘 설치된 겁니다.
+저도 같이 축하드립니다.
+
+### 샘플예제
+```
+d:
+cd D:\_my\git\selfhow\django-blog-sample-001\src
+python manage.py runserver
+```
+
