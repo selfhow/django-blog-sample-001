@@ -376,4 +376,59 @@ id 열은 자동으로 생성된다는 점에 유의하세요.
 python manage.py migrate blog  
 ```  
   
-```Applying blog.0001_initial... OK``` 메세지가 나오면 성공입니다.
+```Applying blog.0001_initial... OK``` 메세지가 나오면 성공입니다.  
+  
+# django admin  
+이제 django가 자랑하는 admin 입니다.  
+  
+## 관리자 아이디 생성  
+```  
+python manage.py createsuperuser  
+```  
+  
+콘솔로 유저이름 / 이메일 / 비밀번호 를 물어봅니다.  
+유저이름 : selfhow  
+이메일 : 비워둠  
+비밀번호 : selfhowcom  
+비밀번호 확인 : selfhowcom  
+로 일단 해 둡니다.  
+원하시는 걸로 해 둬도 별 관계 없습니다.  
+다만 비밀번호는 8글자 이상이어야 합니다.  
+  
+  
+## admin에 모델 등록  
+이전에 만들었던 Post 모델을 자동으로 관리할 수 있게 해 주죠.  
+  
+/django-blog-sample-001/src/blog/admin.py  
+  
+파일을 열어보세요.  
+```  
+from django.contrib import admin  
+  
+# Register your models here.  
+```  
+  
+우리가 만든 모델을 admin에서 관리할 수 있게 추가해 줍니다.  
+  
+```  
+from django.contrib import admin  
+  
+# Register your models here.  
+  
+from .models import Post # 모델을 불러오고  
+admin.site.register(Post) # 모델을 등록.  
+```  
+  
+이렇게 수정하세요.  
+  
+## 이제 확인할까요?  
+일단 서버를 띄우고  
+```  
+python manage.py runserver  
+```  
+  
+웹브라우저에서 확인합니다.  
+[http://localhost:8000/admin](http://localhost:8000/admin)  
+  
+아까 입력한 아이디와 비밀번호를 입력하세요.  
+멋지게 관리자가 나오면 성공입니다.
