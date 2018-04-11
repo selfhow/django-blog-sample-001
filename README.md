@@ -250,3 +250,32 @@ python manage.py migrate 개별모델이름
 ```  
   
 물론 개별모델은 settings.py 의 INSTALLED_APPS 안에 정의되어 있어야 합니다.
+
+# 앱 생성
+django에서는 개별 기능을 하는 모듈을 앱이라고 부릅니다.
+이제 블로그 앱을 한번 만들어 봅시다.
+
+```
+python manage.py startapp blog
+```
+
+blog가 앱 이름입니다.
+
+
+# 앱 등록
+앱을 생성했다고 끝은 아닙니다.
+앱을 등록해야죠.
+django-blog-sample-001\src\settings.py 를 열고 INSTALLED_APPS 안에 blog항목을 추가합니다.
+
+```
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog', # 여기가 추가된 부분입니다.
+]
+```
+
